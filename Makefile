@@ -33,8 +33,12 @@ tidy:
 
 .PHONY: build
 build:
-	@env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" main.go
-	# @env GOOS=windows GOARCH=amd64 go build -ldflags "-H windowsgui" main.go
+	# @env GOOS=linux GOARCH=amd64 go build -ldflags="-s -w"
+	@env GOOS=windows GOARCH=amd64 go build
+
+.PHONY: build-gui
+build-gui:
+	@env GOOS=windows GOARCH=amd64 go build -ldflags "-H windowsgui" # No log shown
 
 # .PHONY: build-lambda
 # build-lambda:
